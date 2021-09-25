@@ -35,6 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # User apps
+    'task',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +80,7 @@ DATABASES = {
     },
     'default_mysql': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'testfunzionamento',
+        'NAME': 'attendance-management',
         'USER': os.getenv('DATABASE_USER'),
         'PASSWORD': os.getenv('DATABASE_USER_PASSWORD'),
         'HOST': os.getenv('DATABASE_HOST'),  # Or an IP Address that your DB is hosted on
