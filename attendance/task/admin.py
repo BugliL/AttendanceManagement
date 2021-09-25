@@ -13,7 +13,13 @@ class EventAdmin(admin.ModelAdmin):
     ordering = ('-date',)
 
 
-admin.site.register(Activity)
+class ActivityAdmin(admin.ModelAdmin):
+    filter_horizontal = ('tags',)
+    save_as = True
+    ordering = ('-date',)
+
+
+admin.site.register(Activity, ActivityAdmin)
 admin.site.register(Event, EventAdmin)
 admin.site.register(Project)
 admin.site.register(Tag)

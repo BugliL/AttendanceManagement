@@ -1,3 +1,5 @@
+import textwrap
+
 from django.db import models
 from django.utils import timezone
 
@@ -10,5 +12,6 @@ class Event(models.Model):
     note = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        tags = ", ".join([t.text for t in self.tags.all().order_by('text')])
-        return "{} - {}: {}".format(self.date.isoformat(), self.note, tags)
+        tags = Tag.to_string(self)
+        # note = textwrap.shorten(self.note, width=20)
+        return "{} - {}".format(self.date.isoformat(), tags)

@@ -7,6 +7,9 @@ class Tag(models.Model):
     def __str__(self):
         return self.text
 
+    @classmethod
+    def to_string(cls, entity):
+        return ", ".join([t.text for t in entity.tags.all().order_by('text')])
+
     class Meta:
         ordering = ('text',)
-
