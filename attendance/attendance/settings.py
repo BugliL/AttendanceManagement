@@ -78,14 +78,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.getenv('SQLITE_DATABASE_POSITION'),
     },
-    'default_mysql': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'attendance-management',
-        'USER': os.getenv('DATABASE_USER'),
-        'PASSWORD': os.getenv('DATABASE_USER_PASSWORD'),
-        'HOST': os.getenv('DATABASE_HOST'),  # Or an IP Address that your DB is hosted on
-        'PORT': os.getenv('APPLICATION_DATABASE_PORT'),
-    },
+    # 'default_mysql': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'attendance-management',
+    #     'USER': os.getenv('DATABASE_USER'),
+    #     'PASSWORD': os.getenv('DATABASE_USER_PASSWORD'),
+    #     'HOST': os.getenv('DATABASE_HOST'),  # Or an IP Address that your DB is hosted on
+    #     'PORT': os.getenv('APPLICATION_DATABASE_PORT'),
+    # },
 }
 
 # Password validation
@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Rome'
 
 USE_I18N = True
 
