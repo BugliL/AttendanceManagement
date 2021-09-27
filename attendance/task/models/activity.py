@@ -16,6 +16,9 @@ class Activity(models.Model):
     hours = models.DecimalField(max_digits=4, decimal_places=1)
     note = models.TextField(blank=True)
 
+    def format_day(self):
+        return "{} : {}".format(self.hours, Tag.to_string(self))
+
     def __str__(self):
         tags = Tag.to_string(self)
         return "{} {} {:-5} {}, {}".format(self.date, self.user, self.hours, tags, self.project)
