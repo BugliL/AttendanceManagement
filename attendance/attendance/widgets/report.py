@@ -10,8 +10,8 @@ class Report:
     cell_hour_tpl = '<td class="hours">{}</td>'
     cell_total_tpl = '<td class="hours total">{}</td>'
     date_cell_tpl = '<td class="date">{}</td>'
-    row_tpl = '<tr>{}{}</tr>'
-    table_tpl = "<table class='table report'>{}</table>"
+    row_tpl = '<tr class="{}">{}{}</tr>'
+    table_tpl = "<table class='table table-bordered table-striped report'>{}</table>"
 
     def __init__(self, date: datetime, activities):
         self.date = date
@@ -29,7 +29,11 @@ class Report:
         return self._create_table(rows)
 
     def _create_row(self, day):
-        return self.row_tpl.format(self._create_giorno(day), self._create_activity_list(day))
+        return self.row_tpl.format(
+            'sunday' if day.weekday() == 6 else '',
+            self._create_giorno(day),
+            self._create_activity_list(day)
+        )
 
     def _create_activity_list(self, day):
         return ''.join(

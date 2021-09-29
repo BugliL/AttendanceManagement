@@ -1,0 +1,8 @@
+{% extends 'task/index.html' %}
+
+{% block content %}
+  <div class="report_tables">
+    {% include 'task/table_report.html' with tipo='Tag' report=report_tag %}
+    {% include 'task/table_report.html' with tipo='Project' report=report_projects %}
+  </div>
+{% endblock %}

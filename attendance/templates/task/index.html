@@ -11,11 +11,15 @@
     {# } #}
 
     td {
-        border: 1px solid black;
         font-size: 10px;
         min-width: 20px;
         padding-left: 7px;
         padding-right: 7px;
+    }
+
+    td.large_hours {
+        text-align: center;
+        width: 100px;
     }
 
     td.hours {
@@ -37,9 +41,22 @@
         margin-left: 30px;
     }
 
+    tr.sunday {
+        background-color: darkgray;
+    }
+
+    .report_tables {
+        width: 80%;
+    }
+
+    .report_tables table {
+        width: 40%;
+        float: left;
+        margin-left: 80px;
+    }
   </style>
 </head>
 <body>
-<div class="calendar_div">{{ report }}</div>
+{% block content %}{% endblock %}
 </body>
 </html>

@@ -1,0 +1,16 @@
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th>{{ tipo }}</th>
+    <th>Ore segnate</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for e in report %}
+    <tr>
+      <td class="">{{ e.text }}</td>
+      <td class="large_hours">{{ e.hours }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
