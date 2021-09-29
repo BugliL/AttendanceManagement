@@ -1,9 +1,9 @@
 <div class="pie_chart">
-  <canvas id="{{ chart_id }}"></canvas>
+  <canvas id="pie_{{ chart_id }}"></canvas>
 </div>
 <script>
     const config{{ chart_id }} = {
-        type: 'doughnut',
+        type: 'bar',
         data: {
             datasets: [{
                 data: {{ data.data|safe }},
@@ -11,18 +11,23 @@
                     'rgb(255, 99, 132)',
                     'rgb(54, 162, 235)',
                     'rgb(255, 205, 86)',
-                    'rgb(142,255,86)'
+                    'rgb(123,255,86)'
                 ],
                 label: '{{ title }}'
             }],
             labels: {{ data.labels|safe }}
         },
         options: {
-            responsive: true
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
         }
     };
 
-    const ctx{{ chart_id }} = document.getElementById('{{ chart_id }}').getContext('2d');
+    const ctx{{ chart_id }} = document.getElementById('pie_{{ chart_id }}').getContext('2d');
     window.myPie = new Chart(ctx{{ chart_id }}, config{{ chart_id }});
 
 </script>

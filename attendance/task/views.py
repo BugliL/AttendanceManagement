@@ -19,7 +19,7 @@ class CalendarView(generic.ListView):
         return context
 
 
-def pie_chart(title, records):
+def chart_data(title, records):
     return {
         'title': title,
         'labels': [r.get('text') for r in records],
@@ -33,11 +33,13 @@ class HoursReport(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['report_tag'] = self.get_activity_report()
+        activity_report = self.get_activity_report()
+        context['report_activity'] = activity_report
+        context['report_activity_data'] = chart_data('Attivita', activity_report)
 
         project_report = self.get_project_report()
         context['report_projects'] = project_report
-        context['report_projects_data'] = pie_chart('Progetti', project_report)
+        context['report_projects_data'] = chart_data('Progetti', project_report)
         return context
 
     def get_project_report(self):
