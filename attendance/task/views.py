@@ -1,4 +1,3 @@
-from dateutils import relativedelta
 from django.utils import timezone
 from django.utils.safestring import mark_safe
 from django.views import generic

@@ -4,13 +4,14 @@ from django.db.models import Sum
 
 
 class Report:
-    max_cells = 10
+    max_cells = 12
 
     cell_tpl = '<td>{}</td>'
     cell_hour_tpl = '<td class="hours">{}</td>'
+    cell_total_tpl = '<td class="hours total">{}</td>'
     date_cell_tpl = '<td class="date">{}</td>'
     row_tpl = '<tr>{}{}</tr>'
-    table_tpl = "<table class='report'>{}</table>"
+    table_tpl = "<table class='table report'>{}</table>"
 
     def __init__(self, date: datetime, activities):
         self.date = date
@@ -45,8 +46,8 @@ class Report:
 
     def _create_total_cell(self, day):
         aggregate = self.activities.filter(date=day).aggregate(Sum('hours'))
-        total_cell = [self.cell_hour_tpl.format(aggregate.get('hours__sum', '') if aggregate else '')]
-        return total_cell if total_cell else [self.empty_hours_cell()]
+        total_cell = aggregate.get('hours__sum', '')
+        return [self.cell_total_tpl.format(total_cell) if total_cell else self.empty_hours_cell()]
 
     def empty_hours_cell(self):
         return self.cell_hour_tpl.format('')

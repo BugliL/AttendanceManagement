@@ -2,23 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <title>Elenco delle attivita' svolte</title>
   <style>
-      td {
-          border: 1px solid black;
-          font-size: 10px;
-      }
+    {#body {#}
+    {#    overflow: scroll;#}
+    {# } #}
 
-      td.hours {
-          text-align: center;
-      }
-      td.date {
-          font-size: 20px;
-      }
+    td {
+        border: 1px solid black;
+        font-size: 10px;
+        min-width: 20px;
+        padding-left: 7px;
+        padding-right: 7px;
+    }
 
-      table {
-          width: 100%;
-      }
+    td.hours {
+        text-align: center;
+        width: 20px;
+    }
+
+    td.total {
+        font-size: 20px;
+    }
+
+    td.date {
+        font-size: 20px;
+        width: 70px;
+    }
+
+    .calendar_div {
+        margin-top: 30px;
+        margin-left: 30px;
+    }
+
   </style>
 </head>
 <body>
