@@ -4,6 +4,6 @@
   <div class="report_tables">
     {% include 'task/table_report.html' with tipo='Tag' report=report_tag %}
     {% include 'task/table_report.html' with tipo='Project' report=report_projects %}
-    {% include 'task/pie_chart.html' with title='Report per progetto' chart_id='projectsPieChart' report=report_projects %}
+    {% include 'task/pie_chart.html' with chart_id='projectsPieChart' data=report_projects_data %}
   </div>
 {% endblock %}
