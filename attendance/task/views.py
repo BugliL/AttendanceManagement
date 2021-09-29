@@ -1,11 +1,10 @@
-from datetime import timedelta
-
-from django.utils import timezone
-from django.views import generic
-from django.utils.safestring import mark_safe
-from attendance.widgets.calendar import Calendar
-from task.models import Activity
 from dateutils import relativedelta
+from django.utils import timezone
+from django.utils.safestring import mark_safe
+from django.views import generic
+
+from attendance.widgets import Report
+from task.models import Activity
 
 
 class CalendarView(generic.ListView):
@@ -14,13 +13,7 @@ class CalendarView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         this_month = timezone.now()
-        last_month = this_month + relativedelta(months=-1)
-        next_month = this_month + relativedelta(months=+1)
-
         activities = Activity.objects.all()
         context = super().get_context_data(**kwargs)
-        context['this_month_calendar'] = mark_safe(Calendar(this_month, activities=activities).format())
-        context['last_month_calendar'] = mark_safe(Calendar(last_month, activities=activities).format())
-        context['next_month_calendar'] = mark_safe(Calendar(next_month, activities=activities).format())
-
+        context['report'] = mark_safe(Report(this_month, activities=activities))
         return context
