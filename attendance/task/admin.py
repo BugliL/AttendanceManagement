@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Activity, Event, Project, Tag
+from .models import Activity, Event, Tag, Project
 
 admin.site.site_header = 'Attendance management'  # default: "Django Administration"
 admin.site.index_title = 'Attendance'  # default: "Site administration"
