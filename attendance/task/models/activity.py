@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
-from .project import Project, Project2
+from .project import Project2
 from .event import Event
 from .tag import Tag
 
@@ -11,8 +11,7 @@ class Activity(models.Model):
     date = models.DateField(default=timezone.now)
     user = models.ForeignKey(User, related_name='activities', on_delete=models.PROTECT, null=False, blank=False)
     event = models.ForeignKey(Event, related_name='activities', on_delete=models.PROTECT, null=True, blank=True)
-    project = models.ForeignKey(Project, related_name='activities', on_delete=models.PROTECT, null=True, blank=True)
-    project2 = models.ForeignKey(Project2, related_name='activities', on_delete=models.PROTECT, null=True, blank=True)
+    project = models.ForeignKey(Project2, related_name='activities', on_delete=models.PROTECT, null=True, blank=True)
     tags = models.ManyToManyField(to=Tag, related_name='activities')
     hours = models.DecimalField(max_digits=4, decimal_places=1)
     note = models.TextField(blank=True)
@@ -25,7 +24,7 @@ class Activity(models.Model):
 
     def __str__(self):
         tags = Tag.to_string(self)
-        return "{} {} {:-5} {}, {}".format(self.date, self.user, self.hours, tags, self.project)
+        return "{} {} {:-5} {}, {}".format(self.date, self.user, self.hours, tags, self.project2)
 
     class Meta:
         verbose_name_plural = "activities"
