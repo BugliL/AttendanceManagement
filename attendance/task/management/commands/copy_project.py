@@ -14,11 +14,14 @@ class Command(BaseCommand):
         for p in projects_manager.all():
             p2 = projects2_manager.create(
                 name=p.name,
-                tags=p.tags.all(),
                 note=p.note,
             )
 
-            for a in p.activities:
+            for t in p.tags.all():
+                p2.tags.add(t)
+                p2.save()
+
+            for a in p.activities.all():
                 a.project2 = p2
                 a.save()
 
