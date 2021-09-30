@@ -24,7 +24,7 @@ class Activity(models.Model):
 
     def __str__(self):
         tags = Tag.to_string(self)
-        return "{} {} {:-5} {}, {}".format(self.date, self.user, self.hours, tags, self.project2)
+        return "{} {} {:-5} {}, {}".format(self.date, self.user, self.hours, tags, self.project)
 
     class Meta:
         verbose_name_plural = "activities"
