@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Activity, Event, Project, Tag
+from .models import Activity, Event, Project, Tag, Project2
 
 admin.site.site_header = 'Attendance management'  # default: "Django Administration"
 admin.site.index_title = 'Attendance'  # default: "Site administration"
@@ -28,4 +28,5 @@ class ProjectAdmin(admin.ModelAdmin):
 admin.site.register(Activity, ActivityAdmin)
 admin.site.register(Event, EventAdmin)
 admin.site.register(Project, ProjectAdmin)
+admin.site.register(Project2, ProjectAdmin)
 admin.site.register(Tag)
