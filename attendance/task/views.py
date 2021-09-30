@@ -43,13 +43,16 @@ class HoursReport(generic.ListView):
         return context
 
     def get_project_report(self):
-        return Tag.objects \
-            .filter(activities__project__isnull=False) \
-            .annotate(projectname=F('activities__project__name')) \
-            .values('projectname') \
-            .annotate(text=F('projectname')) \
-            .annotate(hours=Sum('activities__hours')) \
+        by = Activity.objects \
+            .filter(project__isnull=False) \
+            .annotate(hoursTmp=F('hours')) \
+            .annotate(text=F('project__name')) \
+            .values('text') \
+            .annotate(hours=Sum('hoursTmp')) \
             .order_by('-hours')
+
+        print(by.query)
+        return by
 
     def get_activity_report(self):
         return Tag.objects \
