@@ -4,7 +4,7 @@ from .tag import Tag
 
 
 
-class Project2(models.Model):
+class Project(models.Model):
     name = models.CharField(max_length=20)
     tags = models.ManyToManyField(to=Tag)
     note = models.TextField()
