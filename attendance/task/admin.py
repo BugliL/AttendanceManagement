@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.http import HttpRequest
 
 from .models import Activity, Event, Tag, Project
 
@@ -17,6 +18,12 @@ class ActivityAdmin(admin.ModelAdmin):
     filter_horizontal = ('tags',)
     save_as = True
     ordering = ('-date',)
+
+    def get_form(self, request, obj=None, **kwargs):
+        form = super(ActivityAdmin, self).get_form(request, obj, **kwargs)
+        for k, v in request.GET.items():
+            form.base_fields[k].initial = v
+        return form
 
 
 class ProjectAdmin(admin.ModelAdmin):

@@ -1,7 +1,7 @@
 from django.db.models import Sum, F
 from django.utils import timezone
 from django.utils.safestring import mark_safe
-from django.views import generic, View
+from django.views import generic
 
 from attendance.widgets import Report
 from task.models import Activity, Tag
@@ -15,7 +15,7 @@ class CalendarView(generic.ListView):
         this_month = timezone.now()
         activities = Activity.objects.all()
         context = super().get_context_data(**kwargs)
-        context['report'] = mark_safe(Report(this_month, activities=activities))
+        context['report'] = mark_safe(Report(activities=activities))
         return context
 
 
