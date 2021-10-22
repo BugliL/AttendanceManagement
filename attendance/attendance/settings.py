@@ -55,7 +55,7 @@ ROOT_URLCONF = 'attendance.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,17 +75,13 @@ WSGI_APPLICATION = 'attendance.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.getenv('SQLITE_DATABASE_POSITION'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'attendance-management',
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_USER_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),  # Or an IP Address that your DB is hosted on
+        'PORT': os.getenv('APPLICATION_DATABASE_PORT'),
     },
-    # 'default_mysql': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'attendance-management',
-    #     'USER': os.getenv('DATABASE_USER'),
-    #     'PASSWORD': os.getenv('DATABASE_USER_PASSWORD'),
-    #     'HOST': os.getenv('DATABASE_HOST'),  # Or an IP Address that your DB is hosted on
-    #     'PORT': os.getenv('APPLICATION_DATABASE_PORT'),
-    # },
 }
 
 # Password validation

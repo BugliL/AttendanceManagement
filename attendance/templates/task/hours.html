@@ -1,0 +1,10 @@
+{% extends 'task/index.html' %}
+
+{% block content %}
+  <div class="report_tables">
+    {% include 'task/table_report.html' with tipo='Tag' report=report_activity %}
+    {% include 'task/table_report.html' with tipo='Project' report=report_projects %}
+    {% include 'task/pie_chart.html' with chart_id='projectsPieChart' data=report_projects_data %}
+    {% include 'task/bar_chart.html' with chart_id='projectsBarChart' data=report_activity_data %}
+  </div>
+{% endblock %}

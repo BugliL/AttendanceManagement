@@ -1,0 +1,28 @@
+<div class="pie_chart">
+  <canvas id="{{ chart_id }}"></canvas>
+</div>
+<script>
+    const config{{ chart_id }} = {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: {{ data.data|safe }},
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)',
+                    'rgb(142,255,86)'
+                ],
+                label: '{{ title }}'
+            }],
+            labels: {{ data.labels|safe }}
+        },
+        options: {
+            responsive: true
+        }
+    };
+
+    const ctx{{ chart_id }} = document.getElementById('{{ chart_id }}').getContext('2d');
+    window.myPie = new Chart(ctx{{ chart_id }}, config{{ chart_id }});
+
+</script>
